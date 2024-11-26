@@ -73,8 +73,9 @@ for linha in lista_dados:
     pyautogui.click(x=160, y=180)
     time.sleep(2)
     pyautogui.click(x=133, y=271)
-    time.sleep(3)
-
+    
+    # Talvez  apareça uma caixa, tenho que criar uma condição 
+    time.sleep(10)
 
     # Passo 7: Nota/Série
     pyautogui.click(x=322, y=253)
@@ -109,7 +110,7 @@ for linha in lista_dados:
         pyautogui.write(operacao, interval=0.1)  # Digita o número da operação com intervalo de 0.1 segundos
     else:
         print("Operação cancelada ou inválida. Pulando para a próxima nota.")
-    continue  # Pula para a próxima iteração do loop    
+        continue  # Pula para a próxima iteração do loop    
         
         
         
@@ -252,11 +253,13 @@ for linha in lista_dados:
     vl = simpledialog.askstring("Vl Total", "Qual o valor total?")
 
     # Verificar se a entrada é válida (não nula e numérica)
-    if vl and vl.isdigit():
+    if vl and vl.replace(',', '', 1).isdigit():
         pyautogui.press('tab', presses=2, interval=0.1)
         time.sleep(2)
         pyautogui.hotkey('ctrl', 'a')
         # Digitar o valor total
+        vl_formatado = vl.replace(',', '.') 
+        
         pyautogui.write(vl, interval=0.1)  
         pyautogui.press('tab', presses=2, interval=0.1)
     else:
@@ -280,7 +283,7 @@ for linha in lista_dados:
 
 
 
-    #Destino
+    #Destino129357714
     pyautogui.click(x=1172, y=532)
     pyautogui.click(x=1304, y=392, clicks=2)
 
